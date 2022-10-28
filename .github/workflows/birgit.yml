@@ -1,0 +1,23 @@
+name: Build and Publish
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  runalocalscript:
+    runs-on: ubuntu-latest
+       
+    steps:
+      # gets the latest repo
+      - uses: actions/checkout@v3
+      # run the test.sh script via bash in the main directory of our repository (try a ls -la to see all files)
+      - name: run the script
+        run: bash test.sh
+      # mal schauen, ob wir docker aufrufen können
+      - name: run docker
+        run: docker run hello-world
+
